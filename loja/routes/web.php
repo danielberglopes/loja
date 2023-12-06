@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::match(['get','post'],  '/', function(){
+    return view('login');
+});
+Route::match(['get', 'post'], '/auth', [Controller::class, 'auth'])->name('auth.uer');
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
+
